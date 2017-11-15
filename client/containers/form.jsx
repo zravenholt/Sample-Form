@@ -12,7 +12,7 @@ class Form extends React.Component {
   }
 
   render () {
-    return (<div>hello from form
+    return (<div>
       <Switch>
         <Route path='/form/formOne' component={FormOne}/>
         <Route path='/form/formTwo' component={FormTwo}/>
