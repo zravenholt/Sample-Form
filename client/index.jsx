@@ -1,7 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import App from './containers/app.jsx';
+import { BrowserRouter } from 'react-router-dom';
 
-
-//provider tag
-ReactDOM.render( (<App />), document.getElementById('app'));
+render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('app'));
