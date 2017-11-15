@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-class Landing extends React.Component {
+class FormOne extends React.Component {
   constructor(props) {
     super(props);
 
@@ -10,10 +10,9 @@ class Landing extends React.Component {
 
   render () {
     return (<div>
-      <Link to='/form/formOne'>Click here to get started</Link>
-      hello from landing
-      </div>);
+      <Link to='/form/formTwo'>Click here for form two</Link>
+      Form One Displayed</div>);
   }
 }
 
-export default Landing;
+export default FormOne;
