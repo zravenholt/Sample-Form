@@ -8,7 +8,8 @@
     "build:watch": "webpack --watch",
     "start": "nodemon server/index.js",
     "create:DB": "psql < ./server/db/createDB.sql",
-    "create:Users": "knex migrate:latest --knexfile ./server/db/knexfile.js"
+    "create:Users": "knex migrate:latest --knexfile ./server/db/knexfile.js",
+    "rollback:Users": "knex migrate:rollback --knexfile ./server/db/knexfile.js"
   },
   "repository": {
     "type": "git",

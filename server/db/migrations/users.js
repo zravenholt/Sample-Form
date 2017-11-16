@@ -7,7 +7,7 @@ exports.up = function(knex) {
       table.string('email');
       table.string('firstName');
       table.string('lastName');
-      table.integer('phone');
+      table.string('phone');
       table.string('streetAddress');
       table.string('city');
       table.string('state');

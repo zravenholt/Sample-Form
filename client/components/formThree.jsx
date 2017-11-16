@@ -14,6 +14,39 @@ class FormThree extends React.Component {
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateDB = this.updateDB.bind(this);
+    this.checkFields = this.checkFields.bind(this);
+    this.alertMessage = this.alertMessage.bind(this);
+  }
+
+  checkFields (data) {
+    let badFields = [];
+    if (!data.streetAddress || data.streetAddress.length < 1) {
+      badFields.push('Not a valid address, please provide a valid address. ');
+    }
+    if (!data.city || data.city.length < 1) {
+      badFields.push('Not a valid city name, please provide a city');      
+    }
+    if (!data.state || (Helper.states.indexOf(data.state) === -1)) {
+      badFields.push('Invalid state, please enter the full name of your state. ');      
+    }
+              //this statement is necessary because zips can start with 0, and parseInt removes 0 from number.
+    if (!data.zip || (data.zip.toString().length && parseInt(data.zip).toString().length !== 5)) {
+      badFields.push('Invalid zip code, please enter the full name of your state. ');      
+    }
+
+    if (badFields.length === 0) {
+      return 'passed';
+    } else {
+      return badFields;
+    }
+  }
+
+  alertMessage (alerts) {
+    let message = 'Oops! Looks like you missed something. Please correct the following: \n';
+    alerts.forEach((problem) => {
+      message += '--' + problem + '\n';
+    });
+    alert(message);
   }
 
   updateDB (data) {
@@ -31,9 +64,16 @@ class FormThree extends React.Component {
   }
 
   handleSubmit (data) {
-    this.props.formThreeSubmit(data);
-    this.updateDB(data);
-    this.props.history.push('/form/overview');
+    let stateName = data.state.slice(0, 1).toUpperCase() + data.state.slice(1).toLowerCase();
+    data.state = stateName;
+    let check = this.checkFields(data);
+    if (check === 'passed') {
+      this.props.formThreeSubmit(data);
+      this.updateDB(data);
+      this.props.history.push('/form/overview');
+    } else {
+      this.alertMessage(check);
+    }
   }
 
   render () {

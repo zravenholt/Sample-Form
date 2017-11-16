@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {formOneSubmit} from '../actions/formOneSubmit.js';
 import {grabID} from '../actions/grabID.js';
+import helper from './helper.jsx';
 
 class FormOne extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class FormOne extends React.Component {
     
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sendToDB = this.sendToDB.bind(this);
+    this.checkFields = this.checkFields.bind(this);
+    this.alertMessage = this.alertMessage.bind(this);
   }
 
   sendToDB (data) {
@@ -43,10 +46,43 @@ class FormOne extends React.Component {
     }
   }
 
+  
+  checkFields (data) {
+    let badFields = [];
+    if (!data.username || data.username.length < 1) {
+      badFields.push('Username too short, must be atleast 1 character long. ');
+    }
+    if (!data.password || data.password.length < 5) {
+      badFields.push('Password too short, must be atleast 5 characters long. ');      
+    }
+    if (!data.email || !helper.validateEmail(data.email)) {
+      badFields.push('Invalid email, please provide a valid email');      
+    }
+
+    if (badFields.length === 0) {
+      return 'passed';
+    } else {
+      return badFields;
+    }
+  }
+
+  alertMessage (alerts) {
+    let message = 'Oops! Looks like you missed something. Please correct the following: \n';
+    alerts.forEach((problem) => {
+      message += '--' + problem + '\n';
+    });
+    alert(message);
+  }
+
   handleSubmit (data) {
-    this.props.formOneSubmit(data);
-    this.sendToDB(data);
-    this.props.history.push('/form/formTwo');
+    let check = this.checkFields(data);
+    if (check === 'passed') {
+      this.props.formOneSubmit(data);
+      this.sendToDB(data);
+      this.props.history.push('/form/formTwo');
+    } else {
+      this.alertMessage(check);
+    }
   }
 
   render () {
