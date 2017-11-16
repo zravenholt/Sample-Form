@@ -12,10 +12,26 @@ class FormThree extends React.Component {
 
     this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateDB = this.updateDB.bind(this);
+  }
+
+  updateDB (data) {
+    axios.put(`/users/${this.props.id}`, {
+      streetAddress: data.streetAddress,
+      city: data.city,
+      state: data.state,
+      zip: parseInt(data.zip)
+    })
+    .then((res) => {
+      console.log('submitted to DB', res);
+    }).catch((err) => {
+      console.log('Error adding user to database:', err);
+    });
   }
 
   handleSubmit (values) {
     this.props.formThreeSubmit(values);
+    this.updateDB(data);
     this.props.history.push('/form/overview');
   }
 

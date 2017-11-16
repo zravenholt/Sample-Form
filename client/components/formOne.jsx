@@ -1,9 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {Form, Text} from 'react-form';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {formOneSubmit} from '../actions/formOneSubmit.js';
+import {grabID} from '../actions/grabID.js';
 
 class FormOne extends React.Component {
   constructor(props) {
@@ -11,10 +13,39 @@ class FormOne extends React.Component {
     this.state = {};
     
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.sendToDB = this.sendToDB.bind(this);
+  }
+
+  sendToDB (data) {
+    if (this.props.id) {
+      axios.put(`/users/${this.props.id}`, {
+        username: data.username,
+        password: data.password,
+        email: data.email
+      })
+      .then((res) => {
+        console.log('resubmitted to DB', res);
+      }).catch((err) => {
+        console.log('Error adding user to database:', err);
+      });
+    } else {
+      axios.post('/users', {
+        username: data.username,
+        password: data.password,
+        email: data.email
+      })
+      .then((res) => {
+        console.log('submitted to DB', res);
+        this.props.grabID(res.data.saved.id);
+      }).catch((err) => {
+        console.log('Error adding user to database:', err);
+      });
+    }
   }
 
   handleSubmit (data) {
     this.props.formOneSubmit(data);
+    this.sendToDB(data);
     this.props.history.push('/form/formTwo');
   }
 
@@ -42,12 +73,15 @@ class FormOne extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    formData: state.formOneData
+    formData: state.formOneData,
+    id: state.id
   };
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({formOneSubmit: formOneSubmit}, dispatch);
+  return bindActionCreators({
+    formOneSubmit: formOneSubmit,
+    grabID: grabID}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormOne);

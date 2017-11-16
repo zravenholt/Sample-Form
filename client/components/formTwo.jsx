@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Form, Text} from 'react-form';
+import axios from 'axios';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {formTwoSubmit} from '../actions/formTwoSubmit.js';
@@ -11,10 +12,25 @@ class FormTwo extends React.Component {
     this.state = {};
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateDB = this.updateDB.bind(this);
+  }
+
+  updateDB (data) {
+    axios.put(`/users/${this.props.id}`, {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      phone: parseInt(data.phone)
+    })
+    .then((res) => {
+      console.log('submitted to DB', res);
+    }).catch((err) => {
+      console.log('Error adding user to database:', err);
+    });
   }
 
   handleSubmit (data) {
     this.props.formTwoSubmit(data);
+    this.updateDB(data);
     this.props.history.push('/form/formThree');
   }
 
@@ -43,7 +59,8 @@ class FormTwo extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    formData: state.formTwoData
+    formData: state.formTwoData,
+    id: state.id
   };
 }
 
