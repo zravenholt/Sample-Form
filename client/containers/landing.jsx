@@ -11,7 +11,6 @@ class Landing extends React.Component {
   render () {
     return (<div>
       <Link to='/form/formOne'>Click here to get started</Link>
-      hello from landing
       </div>);
   }
 }

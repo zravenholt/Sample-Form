@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {Form, Text, Select} from 'react-form';
 import {bindActionCreators} from 'redux';
@@ -29,8 +30,8 @@ class FormThree extends React.Component {
     });
   }
 
-  handleSubmit (values) {
-    this.props.formThreeSubmit(values);
+  handleSubmit (data) {
+    this.props.formThreeSubmit(data);
     this.updateDB(data);
     this.props.history.push('/form/overview');
   }
@@ -62,7 +63,8 @@ class FormThree extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    formData: state.formThreeData
+    formData: state.formThreeData,
+    id: state.id
   };
 }
 
