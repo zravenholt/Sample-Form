@@ -58,7 +58,6 @@ class FormThree extends React.Component {
       zip: parseInt(data.zip)
     })
     .then((res) => {
-      console.log('submitted to DB', res);
     }).catch((err) => {
       console.log('Error adding user to database:', err);
     });

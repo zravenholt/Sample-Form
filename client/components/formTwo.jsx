@@ -24,7 +24,6 @@ class FormTwo extends React.Component {
       phone: parseInt(data.phone)
     })
     .then((res) => {
-      console.log('submitted to DB', res);
     }).catch((err) => {
       console.log('Error adding user to database:', err);
     });
