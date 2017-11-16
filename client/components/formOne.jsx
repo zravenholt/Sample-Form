@@ -27,7 +27,6 @@ class FormOne extends React.Component {
         email: data.email
       })
       .then((res) => {
-        console.log('resubmitted to DB', res);
       }).catch((err) => {
         console.log('Error adding user to database:', err);
       });
@@ -38,7 +37,6 @@ class FormOne extends React.Component {
         email: data.email
       })
       .then((res) => {
-        console.log('submitted to DB', res);
         this.props.grabID(res.data.saved.id);
       }).catch((err) => {
         console.log('Error adding user to database:', err);
@@ -46,7 +44,6 @@ class FormOne extends React.Component {
     }
   }
 
-  
   checkFields (data) {
     let badFields = [];
     if (!data.username || data.username.length < 1) {
