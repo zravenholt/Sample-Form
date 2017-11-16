@@ -10,7 +10,9 @@ class FormThree extends React.Component {
 
   render () {
     return (<div>
-      <Link to='/'>click here to finish</Link>Form three displayed</div>);
+      <Link to='/'>click here to finish</Link>
+      <Link to='/form/formTwo'>Go back and Edit</Link>
+      </div>);
   }
 }
 

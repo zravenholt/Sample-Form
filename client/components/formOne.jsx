@@ -15,28 +15,30 @@ class FormOne extends React.Component {
 
   handleSubmit (data) {
     console.log(data);
+    console.log(this.props);
     this.props.formOneSubmit(data);
   }
 
   render () {
-    return (<div>
+    return (
       <div>
-        <Form onSubmit={(values) => { this.handleSubmit(values); }}>
-          {formApi => (
-            <form onSubmit={formApi.submitForm}>
-              <label htmlFor="username">Choose a Username:</label>
-              <Text field="username" placeholder={this.props.formData ? this.props.formData.username : 'ex: Krusher99'}/>
-              <label htmlFor="password">Create a password:</label>
-              <Text field="password" placeholder={this.props.formData ? this.props.formData.password : 'ex: GoHawks.92!'}/>
-              <label htmlFor="email">What is your email address?:</label>
-              <Text field="email" placeholder={this.props.formData ? this.props.formData.email : 'ex: johnDoe@gmail.com'}/>
-              <button type='submit'>Save and continue</button>
-            </form>
-          )}
-        </Form>
-      </div>
-      <Link to='/form/formTwo'>Click here for form two</Link>
-      Form One Displayed</div>);
+        <div>
+          <Form onSubmit={(values) => { this.handleSubmit(values); }}>
+            {formApi => (
+              <form onSubmit={formApi.submitForm}>
+                <label htmlFor="username">Choose a Username:</label>
+                <Text field="username" placeholder={this.props.formData ? this.props.formData.username : 'ex: Krusher99'}/>
+                <label htmlFor="password">Create a password:</label>
+                <Text field="password" placeholder={this.props.formData ? this.props.formData.password : 'ex: GoHawks.92!'}/>
+                <label htmlFor="email">What is your email address?:</label>
+                <Text field="email" placeholder={this.props.formData ? this.props.formData.email : 'ex: johnDoe@gmail.com'}/>
+                <button type='submit'>Save and continue</button>
+              </form>
+            )}
+          </Form>
+        </div>
+        <Link to='/form/formTwo'>Click here for form two</Link>
+      </div>);
   }
 }
 
