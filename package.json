@@ -23,7 +23,6 @@
   "homepage": "https://github.com/zravenholt/Sample-Form#readme",
   "dependencies": {
     "axios": "^0.17.1",
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bookshelf": "^0.11.1",
     "express": "^4.15.2",
