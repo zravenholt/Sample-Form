@@ -10,7 +10,12 @@ class Landing extends React.Component {
 
   render () {
     return (<div>
-      <Link to='/form/formOne'>Click here to get started</Link>
+      <div className='background'>
+        <div className='center-container'>
+          Greetings! Please take a few moments to give us some info about you.
+        </div>
+        <Link to='/form/formOne'>Click here to get started</Link>
+      </div>
       </div>);
   }
 }

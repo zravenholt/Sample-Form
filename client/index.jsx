@@ -9,9 +9,11 @@ import allReducers from './reducers/reducersIndex.js';
 const reduxStore = createStore(allReducers);
 
 render((
-  <BrowserRouter>
-    <Provider store={reduxStore}>
-      <App />
-    </Provider>
-  </BrowserRouter>
+  <div className='index'>
+    <BrowserRouter>
+      <Provider store={reduxStore}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </div>
 ), document.getElementById('app'));
