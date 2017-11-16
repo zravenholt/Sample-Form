@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
   font-size: 20px;
   font-family: sans-serif;
@@ -7,14 +8,144 @@ html, body {
   display: flex;
 }
 
-#id { 
-  position: relative;
+#app { 
+  width: 100%;
   height: 100%;
+  margin: 0 auto;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px -1px 74px 24px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 74px 24px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 74px 24px rgba(0,0,0,0.75);
+}
+
+.filler {
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
 .index {
   position: relative;
   height: 100%;
+  width: 80%;
+  margin: auto;
+  background-color: #3949C2
+}
+
+.landing {
   width: 100%;
-  background-color: #B66969
+  text-align: center;
+}
+
+.label {
+  color: white;
+  padding: 10px;
+}
+
+.response {
+  float: right;
+  color: white;
+  padding-right: 10px;
+}
+
+.input-field {
+  float: right;
+  width: 200px;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.question {
+  padding: 15px;
+}
+
+.questions {
+  text-align: left;
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid white;
+  background-color: rgba(81, 81, 243, 0.47);
+  border-radius: 3px;
+}
+
+.greeting {
+  position: relative;
+  padding: 20% 10% 10% 10%;
+  font-size: 45px;
+  color: White;
+  margin: auto;
+}
+
+.link-button {
+  text-decoration: none;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #1CAE1C;
+  color: white;
+  margin: 0 auto;
+}
+
+.save {
+  margin: 15px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #9E9E9E;
+  font-size: 10px;
+}
+
+.back-button {
+  text-decoration: none;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #AE2B1C;
+  color: white;
+  margin: 15px;
+
+}
+
+.back-button:hover {
+  background-color: rgb(223, 41, 0);      
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 10px 0px #FF9696;
+  -moz-box-shadow: 0px 0px 10px 0px #FF9696;
+  box-shadow: 0px 0px 10px 0px #FF9696;
+}
+
+.back-link:hover {
+  color: #CECECE;
+}
+
+.save:hover {
+  background-color: rgb(37, 223, 0);      
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(155,255,150,1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(155,255,150,1);
+  box-shadow: 0px 0px 10px 0px rgba(155,255,150,1);
+}
+
+#start:hover {
+  background-color: rgb(37, 223, 0);      
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 25px 0px rgba(155,255,150,1);
+  -moz-box-shadow: 0px 0px 25px 0px rgba(155,255,150,1);
+  box-shadow: 0px 0px 25px 0px rgba(155,255,150,1);
+}
+
+.final-button {
+  width: 200px;
+}
+
+.top-blurb {
+  color: white;
+  margin: 0 auto;
+  font-size: 30px;
+  padding: 10% 10% 7% 10%;
 }

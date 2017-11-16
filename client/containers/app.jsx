@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render () {
     return (
-    <div>
+    <div className='root'>
       <Switch>
         <Route exact path='/' component={Landing}/>
         <Route path='/form' component={Form}/>

@@ -70,23 +70,34 @@ class FormTwo extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='filler'>
+        <div className='top-blurb'>
+          Next, we need some basic information about you.
+        </div>
         <div>
           <Form onSubmit={(values) => { this.handleSubmit(values); }}>
             {formApi => (
-              <form onSubmit={formApi.submitForm}>
-                <label htmlFor="firstName">What is your first name?:</label>
-                <Text field="firstName" placeholder={this.props.formData ? this.props.formData.firstName : 'John'}/>
-                <label htmlFor="lastName">What is your last name?:</label>
-                <Text field="lastName" placeholder={this.props.formData ? this.props.formData.lastName : 'Doe'}/>
-                <label htmlFor="phone">What is your phone number?:</label>
-                <Text field="phone" placeholder={this.props.formData ? this.props.formData.phone : '9255551234'}/>
-                <button type='submit'>Save and continue</button>
+              <form className='form' onSubmit={formApi.submitForm}>
+                <div className='questions'>
+                  <div className='question'>
+                    <label htmlFor="firstName" className='label'>What is your first name?:</label>
+                    <Text field="firstName" className='input-field' placeholder={this.props.formData ? this.props.formData.firstName : 'John'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="lastName" className='label'>What is your last name?:</label>
+                    <Text field="lastName" className='input-field' placeholder={this.props.formData ? this.props.formData.lastName : 'Doe'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="phone" className='label'>What is your phone number?:</label>
+                    <Text field="phone" className='input-field' placeholder={this.props.formData ? this.props.formData.phone : '9255551234'}/>
+                  </div>
+                </div>
+                <button type='submit' className='link-button save'>Save and continue</button>
               </form>
             )}
           </Form>
         </div>
-        <Link to='/form/formOne'>Go back and edit</Link>
+        <Link to='/form/formOne' className='back-link'>Want to change something? Click here to go back</Link>
       </div>);
   }
 }

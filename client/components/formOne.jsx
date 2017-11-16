@@ -87,23 +87,35 @@ class FormOne extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='filler'>
+        <div className='top-blurb'>
+          Excellent! First, we will need information to create your account.
+        </div>
         <div>
           <Form onSubmit={(values) => { this.handleSubmit(values); }}>
             {formApi => (
-              <form onSubmit={formApi.submitForm}>
-                <label htmlFor="username">Choose a Username:</label>
-                <Text field="username" placeholder={this.props.formData ? this.props.formData.username : 'ex: Krusher99'}/>
-                <label htmlFor="password">Create a password:</label>
-                <Text field="password" placeholder={this.props.formData ? this.props.formData.password : 'ex: GoHawks.92!'}/>
-                <label htmlFor="email">What is your email address?:</label>
-                <Text field="email" placeholder={this.props.formData ? this.props.formData.email : 'ex: johnDoe@gmail.com'}/>
-                <button type='submit'>Save and continue</button>
+              <form className='form' onSubmit={formApi.submitForm}>
+                <div className='questions'>
+                  <div className='question'>
+                    <label htmlFor="username" className='label'>Choose a Username:</label>
+                    <Text field="username" className='input-field' placeholder={this.props.formData ? this.props.formData.username : 'ex: Krusher99'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="password" className='label'>Create a password:</label>
+                    <Text field="password" className='input-field' placeholder={this.props.formData ? this.props.formData.password : 'ex: GoHawks.92!'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="email" className='label'>What is your email address?:</label>
+                    <Text field="email" className='input-field' placeholder={this.props.formData ? this.props.formData.email : 'ex: johnDoe@gmail.com'}/>
+                  </div>
+                </div>
+                <button type='submit' className='link-button save'>Save and continue</button>
               </form>
             )}
           </Form>
         </div>
-      </div>);
+      </div>
+    );
   }
 }
 

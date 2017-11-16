@@ -16,6 +16,7 @@ class FormThree extends React.Component {
     this.updateDB = this.updateDB.bind(this);
     this.checkFields = this.checkFields.bind(this);
     this.alertMessage = this.alertMessage.bind(this);
+    this.buildStateName = this.buildStateName.bind(this);
   }
 
   checkFields (data) {
@@ -63,9 +64,17 @@ class FormThree extends React.Component {
     });
   }
 
+  buildStateName (state) {
+    let words = state.split(' ');
+    let newWords = [];
+    words.forEach((word) => {
+      newWords.push(word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase());
+    });
+    return newWords.join(' ');
+  }
+
   handleSubmit (data) {
-    let stateName = data.state.slice(0, 1).toUpperCase() + data.state.slice(1).toLowerCase();
-    data.state = stateName;
+    data.state = this.buildStateName(data.state);
     let check = this.checkFields(data);
     if (check === 'passed') {
       this.props.formThreeSubmit(data);
@@ -78,25 +87,38 @@ class FormThree extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='filler'>
+        <div className='top-blurb'>
+          Finally, please provide us with your current address.
+        </div>
         <div>
           <Form onSubmit={(values) => { this.handleSubmit(values); }}>
             {formApi => (
-              <form onSubmit={formApi.submitForm}>
-                <label htmlFor="streetAddress">What is your street address?:</label>
-                <Text field="streetAddress" placeholder={this.props.formData ? this.props.formData.streetAddress : 'ex: 12345 Main St.'}/>
-                <label htmlFor="city">What city do you live in?: </label>
-                <Text field="city" placeholder={this.props.formData ? this.props.formData.city : 'ex: San Francisco'}/>
-                <label htmlFor='state'>What state is that in?:</label>
-                <Text field="state" placeholder={this.props.formData ? this.props.formData.state : 'ex: California'}/>
-                <label htmlFor="zip">What is your 5 digit zip code?: </label>
-                <Text field="zip" placeholder={this.props.formData ? this.props.formData.zip : 'ex: 94102'}/>
-                <button type='submit'>Save and continue</button>
+              <form className='form' onSubmit={formApi.submitForm}>
+                <div className='questions'>
+                  <div className='question'>
+                    <label htmlFor="streetAddress" className='label'>What is your street address?:</label>
+                    <Text field="streetAddress" className='input-field' placeholder={this.props.formData ? this.props.formData.streetAddress : 'ex: 12345 Main St.'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="city" className='label'>What city do you live in?: </label>
+                    <Text field="city" className='input-field' placeholder={this.props.formData ? this.props.formData.city : 'ex: San Francisco'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor='state' className='label'>What state is that in?:</label>
+                    <Text field="state" className='input-field' placeholder={this.props.formData ? this.props.formData.state : 'ex: California'}/>
+                  </div>
+                  <div className='question'>
+                    <label htmlFor="zip" className='label'>What is your 5 digit zip code?: </label>
+                    <Text field="zip" className='input-field' placeholder={this.props.formData ? this.props.formData.zip : 'ex: 94102'}/>
+                  </div>
+                </div>
+                <button type='submit' className='link-button save'>Save and continue</button>
               </form>
             )}
           </Form>
         </div>
-        <Link to='/form/formTwo'>Go back and Edit</Link>
+        <Link to='/form/formTwo' className='back-link'>Want to change something? Click here to go back</Link>
       </div>);
   }
 }

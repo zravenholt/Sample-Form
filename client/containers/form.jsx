@@ -13,7 +13,7 @@ class Form extends React.Component {
   }
 
   render () {
-    return (<div>
+    return (<div className='filler'>
       <Switch>
         <Route path='/form/formOne' component={FormOne}/>
         <Route path='/form/formTwo' component={FormTwo}/>
