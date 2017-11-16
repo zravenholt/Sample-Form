@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Form, Text, Radio, RadioGroup, Select, Checkbox } from 'react-form';
+import {Form, Text} from 'react-form';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {formTwoSubmit} from '../actions/formTwoSubmit.js';
@@ -14,9 +14,8 @@ class FormTwo extends React.Component {
   }
 
   handleSubmit (data) {
-    console.log(data);
-    console.log(this.props);
     this.props.formTwoSubmit(data);
+    this.props.history.push('/form/formThree');
   }
 
   render () {
@@ -37,7 +36,6 @@ class FormTwo extends React.Component {
             )}
           </Form>
         </div>
-        <Link to='/form/formThree'>Click here for Form three</Link>
         <Link to='/form/formOne'>Go back and edit</Link>
       </div>);
   }
@@ -50,7 +48,6 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  console.log('dispatch triggered', formTwoSubmit);
   return bindActionCreators({formTwoSubmit: formTwoSubmit}, dispatch);
 }
 

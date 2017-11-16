@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Form, Text, Radio, RadioGroup, Select, Checkbox } from 'react-form';
+import {Form, Text} from 'react-form';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {formOneSubmit} from '../actions/formOneSubmit.js';
@@ -14,9 +14,8 @@ class FormOne extends React.Component {
   }
 
   handleSubmit (data) {
-    console.log(data);
-    console.log(this.props);
     this.props.formOneSubmit(data);
+    this.props.history.push('/form/formTwo');
   }
 
   render () {
@@ -37,7 +36,6 @@ class FormOne extends React.Component {
             )}
           </Form>
         </div>
-        <Link to='/form/formTwo'>Click here for form two</Link>
       </div>);
   }
 }
