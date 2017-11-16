@@ -29,5 +29,7 @@ If create:Users not work, check ./server/db/knexfile.js to make sure the knex.co
 
 From within the root directory:
 
+```sh
 npm run build:watch
 npm run start
+```
