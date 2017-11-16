@@ -73,7 +73,7 @@ class FormThree extends React.Component {
   }
 
   handleSubmit (data) {
-    data.state = this.buildStateName(data.state);
+    if (data.state) { data.state = this.buildStateName(data.state); }
     let check = this.checkFields(data);
     if (check === 'passed') {
       this.props.formThreeSubmit(data);
