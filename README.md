@@ -33,3 +33,5 @@ From within the root directory:
 npm run build:watch
 npm run start
 ```
+
+You can find the app at http://localhost:8080/
