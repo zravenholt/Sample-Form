@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:watch": "webpack --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "create:DB": "psql < ./server/db/createDB.sql",
+    "create:Users": "knex migrate:latest --knexfile ./server/db/knexfile.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,10 @@
   "homepage": "https://github.com/zravenholt/Sample-Form#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "bookshelf": "^0.11.1",
     "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-form": "^2.11.0",

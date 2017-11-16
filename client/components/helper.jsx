@@ -1,5 +1,5 @@
 // these were pulled out of form three to avoid clutter, used to validate any provided state.
-// additionally, this will serve as a data dump site for any other static data.
+// additionally, this can serve as a data dump site for any other static data as the site theoreticall builds.
 
 const stateNames = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
   'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
