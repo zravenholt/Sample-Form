@@ -52,8 +52,8 @@ class FormOne extends React.Component {
     if (!data.username || data.username.length < 1) {
       badFields.push('Username too short, must be atleast 1 character long. ');
     }
-    if (!data.password || data.password.length < 5) {
-      badFields.push('Password too short, must be atleast 5 characters long. ');      
+    if (!data.password || !helper.validatePassword(data.password)) {
+      badFields.push('Invalid password. Must have capital letter, lower case letter, a number, and be at least 6 letters long');      
     }
     if (!data.email || !helper.validateEmail(data.email)) {
       badFields.push('Invalid email, please provide a valid email');      
